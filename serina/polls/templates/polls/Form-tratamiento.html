@@ -1,0 +1,16 @@
+<div class="modal video-modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal1">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div id="small-dialog1" class="mfp-hide book-form">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h3>Iniciar Sesión </h3>
+				<form action="/login" method="post">
+					{% csrf_token %}
+					<input type="categoria" name="categoria" class="categoria" placeholder="Categoría" required=""/>
+					<div class="clearfix"></div>
+					<input type="submit" value="Guardar">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
