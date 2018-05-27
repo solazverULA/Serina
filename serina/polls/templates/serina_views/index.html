@@ -4,9 +4,10 @@
 <html lang="zxx">
 
 <head>
-	<title>Medically a Medical Category Flat Bootstrap Responsive Web Template | Home :: w3layouts</title>
+	<title>{% block title %}Serina{% endblock %}</title>
 
 	<!--meta tags -->
+	{% block head%}
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Medically Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -37,11 +38,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<link href="//fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600" rel="stylesheet">
 	<!--//style sheet end here-->
+	{%endblock%}
 </head>
 
 <body>
 	<div class="banner-w3" id="home">
-		<div class="w3-agile-logo">
+		{% block cabecera %}<div class="w3-agile-logo">
 			<div class=" head-wl">
 				<div class="agileinfo-social-grids">
 					<ul>
@@ -64,8 +66,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		</div>
-		<div class="header-w3layouts">
+		</div>{% endblock %}
+		{% block menu %}<div class="header-w3layouts">
 
 			<!-- Navigation -->
 			<nav class="navbar navbar-default navbar-fixed-top">
@@ -93,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!-- /.navbar-collapse -->
 			</nav>
-		</div>
+		</div> {% endblock%}
 
 
 		<div class="container">
@@ -219,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--//about -->
-	<!--services -->
+	<!--services
 	<div class="services " id="service">
 		<div class="container">
 			<h3 class="title tit-clr">OUR FACILITIES</h3>
@@ -260,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!--//services -->
+	services -->
 	<!--gallery-->
 	<div class="gallery titl-bottom" id="gallery">
 
