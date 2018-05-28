@@ -1,5 +1,6 @@
 <!--Index de polls
 -->
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -18,22 +19,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!--//meta tags ends here-->
 	<!--booststrap-->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	<link href= "{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
 
 	<!--//booststrap end-->
 
 	<!-- font-awesome icons -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
 	<!-- //font-awesome icons -->
-	<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{% static 'css/chocolat.css'%}" type="text/css" media="screen" />
 	<!-- gallery-->
-	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" type="text/css" media="all">
 	<!-- clients-->
 
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
 	<!-- banner text slider-->
 	<!--stylesheets-->
-	<link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+	<link href="{% static 'css/style.css'%}" rel='stylesheet' type='text/css' media="all">
 	<!-- banner text slider-->
 
 	<link href="//fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600" rel="stylesheet">
@@ -43,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<div class="banner-w3" id="home">
-		{% block cabecera %}<div class="w3-agile-logo">
+		<div class="w3-agile-logo">
 			<div class=" head-wl">
 				<div class="agileinfo-social-grids">
 					<ul>
@@ -66,8 +67,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-		</div>{% endblock %}
-		{% block menu %}<div class="header-w3layouts">
+		</div>
+		<div class="header-w3layouts">
 
 			<!-- Navigation -->
 			<nav class="navbar navbar-default navbar-fixed-top">
@@ -95,9 +96,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!-- /.navbar-collapse -->
 			</nav>
-		</div> {% endblock%}
+		</div>
 
-
+{% block cuerpouno %}
 		<div class="container">
 
 			<!-- header -->
@@ -150,6 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</header>
 		</div>
+		{% endblock%}
 		<div class="clearfix"> </div>
 	</div>
 
@@ -566,11 +568,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</footer>
 	<!--menu script-->
 	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
-	<script src="js/bootstrap.js"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
 	<!--//menu script-->
 	<!--FlexSlider banner-->
 
-	<script defer src="js/jquery.flexslider.js"></script>
+	<script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
 	<script type="text/javascript">
 		$(window).load(function () {
 			$('.flexslider').flexslider({
@@ -583,13 +585,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!--End-slider-script-->
 	<!-- OnScroll-Number-Increase-JavaScript -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/jquery.countup.js'%}"></script>
 	<script>
 		$('.counter').countUp();
 	</script>
 	<!-- //OnScroll-Number-Increase-JavaScript -->
-	<script src="js/jquery.chocolat.js"></script>
+	<script src="{% static 'js/jquery.chocolat.js'%}"></script>
 
 	<!--light-box-files -->
 	<script type="text/javascript">
@@ -599,7 +601,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 	<!-- //gallery -->
 	<!--client carousel -->
-	<script src="js/owl.carousel.js"></script>
+	<script src="{% static 'js/owl.carousel.js'%}"></script>
 	<script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
@@ -618,8 +620,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{%static 'js/easing.js'%}"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
