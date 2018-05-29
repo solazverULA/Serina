@@ -8,7 +8,7 @@
 	<title>{% block title %}Serina{% endblock %}</title>
 
 	<!--meta tags -->
-	{% block head%}
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Medically Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -39,7 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<link href="//fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600" rel="stylesheet">
 	<!--//style sheet end here-->
-	{%endblock%}
+
 </head>
 
 <body>
@@ -79,31 +79,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-					<h1><a class="navbar-brand " href="index.html">Medically</a></h1>
+					<h1><a class="navbar-brand " href="index.html">Serina</a></h1>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 						<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
-						<li><a class="page-scroll" href="#home">Home</a></li>
-						<li><a class="page-scroll scroll" href="#about">About</a></li>
-						<li><a class="page-scroll scroll" href="#service">Facilities</a></li>
-						<li><a class="page-scroll scroll" href="#gallery">Laboratory</a></li>
-						<li><a class="page-scroll scroll" href="#clients">Clients</a></li>
+						<li><a class="page-scroll scroll" href="#home">Inicio</a></li>
+						<li><a class="page-scroll scroll" href="../formulario/verCateg">Especialización</a></li>
+						<!--<li><a class="page-scroll scroll" href="#gallery">Tratamientos</a></li> -->
+						<li><a class="page-scroll scroll" href="#clients">Citas</a></li>
 						<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
 			</nav>
 		</div>
-
-{% block cuerpouno %}
 		<div class="container">
-
 			<!-- header -->
+			{%block header%}
 			<header>
-
 				<div class="flexslider-info">
 					<section class="slider">
 						<div class="flexslider">
@@ -111,9 +107,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li>
 									<div class=" w3l-info">
 										<div class="col-md-8  info-lleft-side">
-											<h4>Welcome To Hospital</h4>
-											<p>Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-												egestas.Sed lorem enim, rutrum quis diam nec.</p>
+											<h4>Bienvenido</h4>
+											<p>Serina es una plataforma web que ayudará a recordar a los usuarios todo lorelacionado con su historial médico..</p>
 										</div>
 										<div class=" col-md-4 w3layouts_more-buttn">
 											<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
@@ -151,76 +146,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</header>
 		</div>
-		{% endblock%}
+
 		<div class="clearfix"> </div>
 	</div>
+		{% endblock%}
 
 	<!-- //header -->
 	<!-- modal -->
-	<div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title">Medically</h4>
-				</div>
-				<div class="modal-body">
-					<div class="out-info">
-						<img src="images/g1.jpg" alt="" />
-						<p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
-							eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellu</p>
+		<div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Serina</h4>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
-
-	<!--about -->
-	<div class="agileits-banner-grids text-center">
-		<div class="banner-bottom-girds">
-			<div class="col-md-4  col-sm-4 clr1 agileits-banner-grid">
-				<span class="fa fa-heart banner-icon" aria-hidden="true"></span>
-				<h4>Transplant</h4>
-				<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-
-			</div>
-			<div class="col-md-4 col-sm-4 clr2 agileits-banner-grid">
-				<span class="fa fa-ambulance banner-icon" aria-hidden="true"></span>
-				<h4>Emergency</h4>
-				<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-
-			</div>
-			<div class=" col-md-4 col-sm-4 clr3 agileits-banner-grid">
-				<span class="fa fa-heartbeat banner-icon" aria-hidden="true"></span>
-				<h4>Client Care</h4>
-				<p>Itaque earum rerum hic tenetur a sapiente delectus reiciendis maiores alias consequatur aut.</p>
-
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	<div class="about" id="about">
-		<div class="container">
-			<div class="imgg-info-w3">
-				<div class="col-md-6 left-about-img">
-
-					<img src="images/a1.jpg" class="img-responsive s1" alt="s1">
-				</div>
-				<div class="col-md-6 welcome-left wel">
-					<div class="welcome-left-top">
-						<h4>Who are we </h4>
-						<p>Maecenas a odio tortor. Maecenas finibus odio in tellus tristique, sit amet venenatis ante imperdiet. Morbi lectus
-							massa, fermentum eget mi ac, facilisis efficitur velit. Duis scelerisque iaculis nisi semper laoreet. Nunc aliquam
-							nisl cursus venenatis fringilla. Donec sagittis lobortis tellus, vel eleifend neque consequat sed. sit amet venenatis
-							ante imperdiet. Morbi lectus massa, fermentum eget mi ac, facilisis efficitur velit. </p>
-						<div class="agileits_w3layouts_more">
-							<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
+					<div class="modal-body">
+						<div class="out-info">
+							<img src="images/g1.jpg" alt="" />
+							<p>Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae,
+								eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellu</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- //modal -->
+
+	<!--about -->
+	<div class="agileits-banner-grids text-center">
+
 	</div>
 	<!--//about -->
 	<!--services
@@ -265,7 +219,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	services -->
+	{%block C1%}
 	<!--gallery-->
+	<!--
 	<div class="gallery titl-bottom" id="gallery">
 
 		<h3 class="title">Laboratory</h3>
@@ -320,8 +276,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 	</div>
-	<!--//gallery-->
+	{%endblock%}
+	//gallery-->
+	{%block C2%}
 	<!-- team-->
+	<!--
 	<div class="team agileits" id="team">
 		<div class="team-info">
 			<div class="container">
@@ -387,9 +346,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	{%endblock%}
 	<!-- //team -->
 	<!--testimonials-->
+	<!--
+	{%block C3%}
 	<div class="testimonials" id="clients">
 		<h3 class="title tit-clr">OUR CLIENTS</h3>
 		<div class="container">
@@ -431,8 +393,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!-- //testimonials-->
+	{%endblock%}
+	< //testimonials-->
 	<!--subscribe-->
+	{%block C4%}
+	<!--
 	<div class="subscribe text-center clr3">
 		<div class="container">
 			<h3 class="title">Subscribe</h3>
@@ -446,8 +411,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</form>
 		</div>
 	</div>
+	{%endblock%}
 	<!--//subscribe-->
 	<!--contact-->
+	{%block C5%}
+	<!--
 	<div class="contact" id="contact">
 		<div class="container">
 			<h3 class="title">CONTACT US</h3>
@@ -505,30 +473,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		</div>
 	</div>
+
+	{%endblock%} -->
 	<!--//contact-->
 
 	<!--footer-->
-
+{%block footer%}
 	<div class="footer">
 		<nav>
 			<ul class="nav-buttom">
-				<li><a class="page-scroll scroll" href="#home">Home</a></li>
-				<li><a class="page-scroll scroll" href="#about">About</a></li>
-				<li><a class="page-scroll scroll" href="#service">Facilities</a></li>
-				<li><a class="page-scroll scroll" href="#gallery">Laboratory</a></li>
-				<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
+				<li><a class="page-scroll scroll" href="#home">Inicio</a></li>
+				<li><a class="page-scroll scroll" href="#service">Especialización</a></li>
+				<li><a class="page-scroll scroll" href="#gallery">Tratamientos</a></li>
+				<li><a class="page-scroll scroll" href="#contact">Citas</a></li>
 			</ul>
 		</nav>
 		<div class="container">
 		<div class="colr-row col-md-6  ">
 			<div class="col-md-6 col-sm-6 col-xs-6  bottom-head bottm-grid">
-				<h2><a href="index.html">Medically</a></h2>
-				<span class="cap">Lorem Ipsum</span>
+				<h2><a href="index.html">Serina</a></h2>
 				<div class="clearfix"> </div>
 			</div>
 
 			<div class="col-md-6 col-sm-6 col-xs-6 copyright bottm-grid">
-				<h3>Follow us</h3>
+				<h3>Siguenos</h3>
 				<div class="icons">
 					<ul>
 						<li><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -544,16 +512,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="colr-row  col-md-6">
 			<div class="col-md-6 col-sm-6 col-xs-6 one bottm-grid">
-				<h3>About us</h3>
-				<p> enim. Aliquam lorem ante, dapibus in,Aliquam lorem ante </p>
+				<h3>Acerca de</h3>
+				<p> Serina es un asistente virtual el cual le ayudara a organizar todo lo referente a su historial médico</p>
 				<div class="clearfix"></div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-6 three bottm-grid">
-				<h3>Contact</h3>
+				<h3>Contacto</h3>
 				<div class="addres up-out">
-					<p><span class="fa fa-map-marker icons-left" aria-hidden="true"></span>333 Broome St New York</p>
+					<p><span class="fa fa-map-marker icons-left" aria-hidden="true"></span>Mérida, Venezuela</p>
 
-					<p><span class="fa fa-phone icons-left" aria-hidden="true"></span>Call us:+9900887766</p>
+					<p><span class="fa fa-phone icons-left" aria-hidden="true"></span>tlf:+582400887766</p>
 
 				</div>
 				<div class="clearfix"> </div>
@@ -564,8 +532,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<footer>
-		<p>&copy;2018 Medically. All Rights Reserved | Design by <a href="http://www.W3Layouts.com" target="_blank">W3Layouts</a></p>
+		<p>&copy;2018 Serina. All Rights Reserved</a></p>
 	</footer>
+	{%endblock%}
 	<!--menu script-->
 	<script type='text/javascript' src='js/jquery-2.2.3.min.js'></script>
 	<script src="{% static 'js/bootstrap.js' %}"></script>

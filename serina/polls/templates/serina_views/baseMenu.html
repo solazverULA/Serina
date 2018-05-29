@@ -1,7 +1,5 @@
-{% load staticfiles %}
-
 <!--extends 'direccion de carpetas'-->
-<!-- Archivos estaticos(css, js, ...) -->
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -13,6 +11,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="Medically Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+{%block head2%}
+
+{%endblock%}
 	<script type="application/x-javascript">
 		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); }
@@ -39,8 +40,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<link href="//fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600" rel="stylesheet">
 	<!--//style sheet end here-->
+	{%endblock%}
+
+
 </head>
-{%endblock%}
+
 
 <body>
 	{% block cabecera%}
@@ -84,18 +88,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-				<h1><a class="navbar-brand " href="index.html">Medically</a></h1>
+				<h1><a class="navbar-brand " href="index.html">Serina</a></h1>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 					<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
-					<li><a class="page-scroll" href="#home">Home</a></li>
-					<li><a class="page-scroll scroll" href="#about">About</a></li>
-					<li><a class="page-scroll scroll" href="#service">Facilities</a></li>
-					<li><a class="page-scroll scroll" href="#gallery">Laboratory</a></li>
-					<li><a class="page-scroll scroll" href="#clients">Clients</a></li>
+					<li><a class="page-scroll scroll" href="../index">Inicio</a></li>
+					<li><a class="page-scroll scroll" href="verCateg">Especialización</a></li>
+					<li><a class="page-scroll scroll" href="addIndicaciones">Tratamientos</a></li>
+					<li><a class="page-scroll scroll" href="../formulario">Citas</a></li>
 					<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
 				</ul>
 			</div>
@@ -103,8 +106,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</nav>
 	</div>
 	{% endblock %}
+  {%block imag%}
   <div class="subscribe text-center clr3">
-  <h1>SI FUNCIONA</h1>
+
 </div>
+{% endblock %}
+{%block cuerpoUno%}
+<div class="contact" id="contact">
+	<div class="container">
+
+	</div>
+	<div>
+{%endblock%}
+{%block cuerpoDos%}
+<div class="contact" id="contact">
+	<div class="container">
+
+	</div>
+	<div>
+{%endblock%}
 </body>
 </html>
