@@ -1,6 +1,6 @@
 {%extends 'serina_views/baseMenu.html'%}
 {% load staticfiles %}
-{% block title %}Especializacion{% endblock %}
+{% block title %}Formulario{% endblock %}
 {%block head2%}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,59 +15,65 @@
 {%endblock%}
 
 {%block cuerpoDos%}
-<div class="contact" id="contact">
-<h1> Indcaciones Médicas</h1>
+<div class = "imagen-dos" id="contact">
+
     <div class="bg-agile">
 	<div class="book-appointment">
 	<h2>Introduzca todos los valores</h2>
-			<form action="#" method="post">
+
+      <form action="#" method="post">
+
 				<div class="left-agileits-w3layouts same">
+          <div class="gaps">
+            <p>Cita:</p>
+            <input type="text"  name="nombre_medicina" placeholder="muestra cita donde se guardara el tratamiento" required=""/>
+          </div>
 					<div class="gaps">
 						<p>Nombre Medicina</p>
-						<input type="text" name="nombre_medicina" placeholder="" required=""/>
+						<input type="text"  name="nombre_medicina" placeholder="" required=""/>
 					</div>
 					<div class="gaps">
 						<p>Tipo de Dosis</p>
-							<input type="text" name="tipo_dosis" placeholder="" required=""/>
+							<input type="text" class="color_recuadro" name="tipo_dosis" placeholder="" required=""/>
 					</div>
 
 					<div class="gaps">
 						<p>Comienzo del tratamiento</p>
-						<input  id="gallery" name="fecha_inicio_ind" type="text" placeholder = "mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+						<input  id="gallery" class="color_recuadro" name="fecha_inicio_ind" type="text" placeholder = "yyyy/mm/dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
 					</div>
           <div class="gaps">
 						<p>Finalización del tratamiento</p>
-						<input  id="gallery" name="fecha_final_ind" type="text" placeholder = "mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+						<input  id="gallery" class="color_recuadro" name="fecha_final_ind" type="text" placeholder = "yyyy/mm/dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
 					</div>
           <div class="gaps">
 						<p>Fecha del Recipe</p>
-						<input  id="gallery" name="fecha_recipe_tra" type="text" placeholder = "mm/dd/yyyy" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+						<input  id="gallery" class="color_recuadro" name="fecha_recipe_tra" type="text" placeholder = "yyyy/mm/dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
 					</div>
 				</div>
 				<div class="right-agileinfo same">
+          <div class="gaps">
+						<p>Especialidad</p>
+						<input type="text" class="color_recuadro" name="categoria" placeholder="muestra categoria a la q pertenece" required=""/>
+					</div>
 					<div class="gaps">
 						<p>Tipo de Medicamento</p>
-						<input type="text" name="tipo_medicamento" placeholder="" required=""/>
+						<input type="text" class="color_recuadro" name="tipo_medicamento" placeholder="" required=""/>
 					</div>
 					<div class="gaps">
 						<p>Cantidad de Dosis</p>
-						<input type="text" name="cantidad_dosis" placeholder="" required=""/>
+						<input type="text" class="color_recuadro" name="cantidad_dosis" placeholder="" required=""/>
 					</div>
           <div class="gaps">
 						<p>Diferencia de Horas entre cada toma</p>
-						<input type="text" name="tipo_medicamento" placeholder="" required=""/>
+						<input type="text" class="color_recuadro" name="tipo_medicamento" placeholder="" required=""/>
 					</div>
 					<div class="gaps">
 						<p>¿El tratamiento es continuo?</p>
-						<input type="text" name="continuo_tratamiento" placeholder="si/no" required=""/>
-					</div>
-          <div class="gaps">
-						<p>Especialización a la que pertenece</p>
-						<input type="text" name="nombre.categoria" placeholder="" required=""/>
+						<input type="text" class="color_recuadro" name="continuo_tratamiento" placeholder="si/no" required=""/>
 					</div>
 				</div>
 				<div class="clear"></div>
-				<input type="submit" value="Guardar">
+				<input type="submit" style="position: relative; bottom: 8px; left: 43%" value="Guardar">
 			</form>
 		</div>
    </div>

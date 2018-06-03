@@ -30,8 +30,7 @@ img{max-width:100%;}
 body {
     /*font-family: 'Open Sans', sans-serif;*/
     font-family: 'Handlee', cursive;
-
-    background: url(../images/banner.jpg)no-repeat center 0px;
+    background: url(../images/1_1.jpg)no-repeat center 0px;
     background-attachment: fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -189,6 +188,7 @@ h1 {
     color: #fff;
     opacity: 1;
     border-color: #fff;
+    font-size: 30px;
 }
 .resp-tab-item span {
     border-bottom: 3px solid transparent;

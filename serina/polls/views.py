@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView
 from django.http import HttpResponse, HttpResponseRedirect
-from .forms import FormCategoria
+from .forms import FormCategoria, FormUsuario
 from .models import Categoria
+from .models import Cita
+from .models import Usuario
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse, HttpResponseNotFound
+from django.http import Http404
 
 # Create your views here.
 def index(request):
     return render(request, 'serina_views/index.html')
 
-def ver_categ(request):
-    return render(request, 'serina_views/ver_categ.html')
-
 def form_categoria(request):
-    return render(request, 'serina_views/formTratamiento.html')
+    return render(request, 'serina_views/ver_categ.html')
 
 def add_categoria(request):
 
@@ -20,19 +23,27 @@ def add_categoria(request):
     context = {'categoria': categoria}
     db_o = Categoria(nombre=categoria)
     db_o.save()
-    return render(request, "serina_views/ver_categ.html", context)
+    return redirect('ver_categ')
+
 
 def add_cita(request):
-
-    fecha = request.POST['fecha']
-    nota = request.POST['nota']
+    categoria = request.POST['categoriaas']
+    fecha = request.POST['fechaa']
+    nota = request.POST['notaa']
+    email = Usuario.objects.get(pk ='kathe@gmail.com')
+    email.save()
+    id_categ = Categoria.objects.get(pk = categoria)
+    id_categ.save()
     context = {'fecha': fecha, 'nota': nota}
-    db_fecha = Cita(fecha = fecha)
-    db_fecha.save()
-    db_nota = Cita(nota = nota)
-    db_nota.save()
-    return render(request, "serina_views/ver_categ.html", contex)
+    cita = Cita(fecha = fecha, nota = nota, email_usuario = email, id_categoria = id_categ)
+    cita.save()
+    return redirect('ver_categ')
 
+def ver_categ(request):
+    categoria = Categoria.objects.all()
+    cita = Cita.objects.all()
+    context = {'categoria': categoria, 'cita': cita}
+    return render(request, 'serina_views/ver_categ.html', context)
 
 def add_indicaciones(request):
 
@@ -43,8 +54,40 @@ def add_indicaciones(request):
 
     return render(request, "serina_views/form_indicaciones.html")
 
+def ver_tratamiento(request):
+    return render(request, "serina_views/ver_tratamiento.html")
 
+def add_informacion(request):
+    return render(request, "serina_views/form_informacion.html")
 
-def consultar_categ(resquest):
-    categoria = Categoria.objects.all()
-    return render(request, "serina_views/ver_categ.html", {'categoria': categoria})
+def mostrar_login(request):
+    return render(request, "serina_views/sign_in.html" )
+
+def mostrar_sign_up(request):
+    return render(request, "serina_views/sign_up.html")
+
+def add_sing_up(request):
+    email = request.POST['cuenta']
+    password = request.POST['password']
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    ci = request.POST['cedula']
+    nacimiento = request.POST['fecha_nacimiento']
+    altura = request.POST['altura']
+    db_object = Usuario(email = email, contrasena = password, nombre = nombre, apellido = apellido, ci = ci, fecha_nacimiento =nacimiento, altura = altura)
+    db_object.save()
+    return render(request, "serina_views/index.html")
+
+def sing_in(request):
+    email = request.POST['lemail']
+    password = request.POST['lpassword']
+
+    try:
+        usuario = Usuario.objects.get(pk=email)
+    except Usuario.DoesNotExist:
+        raise Http404("User does not exist")
+
+    if(usuario.contrasena == password):
+        return HttpResponse('<h1>User login</h1>')
+    else:
+        return HttpResponse('<h1>User logout</h1>')

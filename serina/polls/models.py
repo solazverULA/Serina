@@ -1,4 +1,7 @@
 from django.db import models
+
+#from django.contrib.auth.models import AbstractUser, UserManager
+
 #from django.utils import timezone
 #MODELOS DE LA BASE DE DATOS.
 # Create your models here.
@@ -27,20 +30,26 @@ class Familiar(models.Model):
     def __str__(self):
         return '%s %s' % (self.nombre, self.apellido)
 
+
+class Categoria(models.Model):
+    nombre = models.CharField(max_length=80, unique = True)
+
+
+class Cita(models.Model):
+    fecha = models.DateField()
+    nota = models.CharField(max_length=70)
+    email_usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE)
+    id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
 class Informacion(models.Model):
     ci_doctor = models.CharField(max_length=8, primary_key=True)
     nombre_doctor = models.CharField(max_length=40)
     apellido_doctor = models.CharField(max_length=40)
     tlf = models.CharField(max_length=40)
     clinica = models.CharField(max_length=40)
+    id_cita = models.ForeignKey(Cita, on_delete=models.CASCADE)
     class Meta:
         unique_together = ("nombre_doctor","apellido_doctor")
-
-class Cita(models.Model):
-    fecha = models.DateField()
-    nota = models.CharField(max_length=70)
-    email_usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE)
-    ci_informacion = models.ForeignKey(Informacion, on_delete=models.CASCADE)
 
 class Imagen(models.Model):
     id_cita = models.ForeignKey(Cita, on_delete=models.CASCADE)
@@ -50,9 +59,6 @@ class Imagen(models.Model):
 
     class Meta:
         unique_together = ("id_cita","link")
-
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=80)
 
 class Tratamiento(models.Model):
     continuo = models.BooleanField()
@@ -90,12 +96,6 @@ class Nota(models.Model):
     observacion = models.CharField(max_length=140)
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)
 
-class CitaCategoria(models.Model):
-    id_cita = models.ForeignKey(Cita, on_delete=models.CASCADE)
-    id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-
-    class Meta:
-        unique_together = ("id_cita","id_categoria")
 
 class TratamientoMedicina(models.Model):
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)

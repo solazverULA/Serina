@@ -3057,9 +3057,9 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #F16B6F;
 }
 .btn-default:focus,
 .btn-default.focus {
@@ -3115,19 +3115,19 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #F16B6F;
+  border-color: #F16B6F;
 }
 .btn-primary:focus,
 .btn-primary.focus {
-  color: #fff;
-  background-color: #286090;
-  border-color: #122b40;
+  color: #E74C3C;
+  background-color: #FFFFFF;
+  border-color: #E74C3C;
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  background-color: #E74C3C;
+  border-color: #E74C3C;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3145,9 +3145,9 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary:active.focus,
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
-  color: #fff;
-  background-color: #204d74;
-  border-color: #122b40;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #000000;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -3229,19 +3229,19 @@ fieldset[disabled] .btn-success.focus {
 }
 .btn-info {
   color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+  background-color: #00e4c1;
+  border-color: #00e4c1;
 }
 .btn-info:focus,
 .btn-info.focus {
   color: #fff;
-  background-color: #31b0d5;
-  border-color: #1b6d85;
+  background-color: #00e4c1;
+  border-color: #00e4c1;
 }
 .btn-info:hover {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-color: #000000;
 }
 .btn-info:active,
 .btn-info.active,
@@ -3433,10 +3433,10 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-lg,
 .btn-group-lg > .btn {
-  padding: 10px 16px;
-  font-size: 18px;
+  padding: 10px 30px;
+  font-size: 14px;
   line-height: 1.3333333;
-  border-radius: 6px;
+  border-radius: 4px;
 }
 .btn-sm,
 .btn-group-sm > .btn {
@@ -3555,7 +3555,7 @@ tbody.collapse.in {
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #333;
+  color: #E74C3C;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
@@ -5470,8 +5470,8 @@ button.list-group-item-danger.active:focus {
 .panel-title {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
-  color: inherit;
+  font-size: 20px;
+  color: #000000;
 }
 .panel-title > a,
 .panel-title > small,

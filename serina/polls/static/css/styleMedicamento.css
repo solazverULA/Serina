@@ -38,6 +38,9 @@ body{
     background-attachment: fixed;
     padding: 0 0 2em;
 }
+.imagen-dos{
+ background: url(../images/images10.jpg) no-repeat 0px 0px;
+}
 .bg-agile {
     width: 65%;
     margin: 0 auto;
@@ -58,7 +61,7 @@ h1 {
 .book-appointment h2 {
     text-align: center;
     font-size: 25px;
-    color:#207fdd;
+    color: #FFFFFF;
     text-transform: uppercase;
     margin-bottom: 1.5em;
     font-weight: 500;
@@ -66,8 +69,8 @@ h1 {
     font-family: 'Droid Sans', sans-serif;
 }
 .book-appointment {
-    background:  #f7f9f9;
-    padding: 50px 30px;
+    background: rgba( 33, 33, 33, 0.8 );
+		border-radius: 6px;
 }
 .book-appointment input[type="text"], .book-appointment input[type="date"], .book-appointment input[type="time"], .book-appointment input[type="email"],textarea {
     width: 85%;
@@ -164,7 +167,7 @@ input[type=submit]:hover {
     float: left;
 }
 .book-appointment p {
-    color: #207fdd;
+    color:    #FFFFFF;
     font-size: 17px;
     letter-spacing: .5px;
 	text-transform:capitalize;
@@ -230,7 +233,7 @@ p.wickedpicker__title {
 		padding: 0px 2px;
 	}
 	.book-appointment p {
-		font-size: 16px;
+		font-size: 22px;
 	}
 	.book-appointment h2 {
 		font-size: 22px;
