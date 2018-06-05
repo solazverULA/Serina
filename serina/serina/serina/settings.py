@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'serina_proyecto',
         'USER': 'postgres',
-        'PASSWORD': '',
+        'PASSWORD': 'ternary2017',
         'HOST': 'localhost',
         'PORT': '5432',
     }

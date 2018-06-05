@@ -27,16 +27,17 @@ def add_categoria(request):
 
 
 def add_cita(request):
-    categoria = request.POST['categoriaas']
+    categoria = request.POST['categ']
     fecha = request.POST['fechaa']
     nota = request.POST['notaa']
-    email = Usuario.objects.get(pk ='kathe@gmail.com')
-    email.save()
+
+    email = Usuario.objects.get(pk ='kathesm903@gmail.com')
+
     id_categ = Categoria.objects.get(pk = categoria)
-    id_categ.save()
-    context = {'fecha': fecha, 'nota': nota}
+
     cita = Cita(fecha = fecha, nota = nota, email_usuario = email, id_categoria = id_categ)
     cita.save()
+
     return redirect('ver_categ')
 
 def ver_categ(request):
