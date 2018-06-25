@@ -30,10 +30,8 @@ class Familiar(models.Model):
     def __str__(self):
         return '%s %s' % (self.nombre, self.apellido)
 
-
 class Categoria(models.Model):
     nombre = models.CharField(max_length=80, unique = True)
-
 
 class Cita(models.Model):
     fecha = models.DateField()
@@ -95,7 +93,6 @@ class Nota(models.Model):
     fecha = models.DateField(primary_key=True)
     observacion = models.CharField(max_length=140)
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)
-
 
 class TratamientoMedicina(models.Model):
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)

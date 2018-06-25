@@ -1,0 +1,73 @@
+{%extends 'serina_views/form_indicaciones.html'%}
+
+{%block cuerpoDos%}
+<div class = "imagen-dos" id="contact">
+  <div class="bg-agile">
+    <div class="book-appointment">
+        {% csrf_token %}
+        <div class="left-agileits-w3layouts same">
+          <div class="gaps">
+            <p> tratamiento: {{tratamiento.id}}</p>
+          <!--  <input type="hidden" name="citas_form" value="{{cita.id}}" /> -->
+          </div>
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for citas in cita%}
+            {%if tratamiento.id_cita_id == citas.id%}
+              <p>Cita: {{citas.fecha}}</p>
+            {%endif%}
+            {%endfor%}
+        </div>
+          <div class="gaps">
+            <p>Medicina: {{medicina.nombre}}</p>
+          </div>
+        </hr>
+          <div class="gaps">
+            <p>Tipo de Dosis: {{dosis.tipo}}</p>
+          </div>
+          <div class="gaps">
+            <p>Fecha del Recipe: {{tratamiento.fecha_recipe}}</p>
+          </div>
+          <div class="gaps">
+            <p>Comienzo del tratamiento: {{indicacion.fecha_inicio}}</p>
+            </div>
+        </div>
+        <div class="right-agileinfo same">
+          <div class="gaps">
+            {%for categorias in categoria%}
+            {%if cita.id_categoria_id == categorias.id%}
+            <p>Especialidad: {{categorias.nombre}} </p>
+            {%endif%}
+            {%endfor%}
+          </div>
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+            <p>Tipo de Medicamento: {{tipo_medicamento.nombre}}</p>
+            </div>
+        </hr>
+          <div class="gaps">
+            <p>Cantidad de Dosis: {{indicacion.cantidad_dosis}}</p>
+            </div>
+          <div class="gaps">
+            <p>Diferencia de Horas entre cada toma: {{indicacion.diferencia_horas}}</p>
+          </div>
+          <div class="gaps">
+            <p>Finalización del tratamiento: {{indicacion.fecha_final}}</p>
+            </div>
+        </div>
+        <div class="clear"></div>
+
+    <!--  </form> -->
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<!-- Calendar -->
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
+    <script>
+      $(function() {
+			$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+			 });
+		</script>
+  </div>
+{%endblock%}
