@@ -9,6 +9,12 @@
 </head>
   {%endblock%}
 
+  {%block cuerpoCero%}
+  <div class="col-md-6 welcome-left wel">
+    <h1>Consultar Tratamientos: </h1>
+  </div>
+{%endblock%}
+
 {%block cuerpoDos%}
 <div class="panel-group" id="acccordion">
   {%for citas in cita %}
@@ -27,7 +33,7 @@
       <div id="ccita_{{citas.id}}" class="panel-collapse collapse">
         {%for tratamientos in tratamiento%}
         {%if tratamientos.id_cita_id == citas.id %}
-        <div class="panel-body"><a href = "datostratamiento?tratamiento={{tratamientos.id}}">Tratamiento {{tratamientos.id}}: {{tratamientos.fecha_recipe}}</a>
+        <div class="panel-body"><a href = "datostratamiento?tratamiento={{tratamientos.id}}">fecha del recipe del tratamiento #{{tratamientos.id}}: {{tratamientos.fecha_recipe}}</a>
         </form>
         </div>
         {%endif%}
@@ -36,6 +42,5 @@
     </div>
     {%endfor%}
   </div>
-
 
 {%endblock%}

@@ -10,6 +10,7 @@ from .models import TipoMedicamento
 from .models import Dosis
 from .models import Medicina
 from .models import Indicacion
+from .models import TratamientoMedicina
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -65,6 +66,8 @@ def show_tratamiento(request):
 def view_tratamiento(request):
     tratamiento = request.GET.get("tratamiento","")
     obj_tratamiento = Tratamiento.objects.get(pk = tratamiento)
+    tratamiento_medicina = TratamientoMedicina.objects.all()
+    categoria = Categoria.objects.all()
     cita = Cita.objects.all()
     tratamiento = Tratamiento.objects.all()
     medicina = Medicina.objects.all()
@@ -72,7 +75,8 @@ def view_tratamiento(request):
     tipo_medicamento = TipoMedicamento.objects.all()
     indicacion = Indicacion.objects.all()
     context = {'cita': cita, 'tratamiento': obj_tratamiento, 'medicina': medicina,
-                'dosis': dosis, 'tipo_medicamento': tipo_medicamento, 'indicacion': indicacion}
+                'dosis': dosis, 'tipo_medicamento': tipo_medicamento, 'indicacion': indicacion,
+                'tratamiento_medicina': tratamiento_medicina, 'categoria': categoria}
     return render(request, "serina_views/info_tratamiento.html", context)
 
 
@@ -115,9 +119,10 @@ def add_indicaciones(request):
     obj_indicacion = Indicacion(nombre_medicina = pk_indicacion, fecha_inicio = fecha_inicio_ind, fecha_final = fecha_final_ind,
                                 diferencia_horas = dif_horas, cantidad_dosis = cantidad_dosis)
     obj_indicacion.save()
-    id_tratamiento = Tratamiento.objects.get(pk = obj_tratamiento)
-    pk_medicina_nombre = Medicina.objects.get(pk = obj_medicina)
+    id_tratamiento = Tratamiento.objects.get(pk = obj_tratamiento.id)
+    pk_medicina_nombre = Medicina.objects.get(pk = nombre_medicina)
     tratamiento_medicina = TratamientoMedicina(id_tratamiento = id_tratamiento, nombre_medicina = pk_medicina_nombre)
+    tratamiento_medicina.save()
     return redirect('show_categoria')
 
 def add_tratamiento(request):
