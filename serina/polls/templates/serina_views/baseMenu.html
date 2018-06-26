@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a class="page-scroll scroll" href="../index">Inicio</a></li>
 							<li><a class="page-scroll scroll" href="categoria">Especialización</a></li>
 							<li><a class="page-scroll scroll" href="tratamiento">Tratamientos</a></li>
-							<li><a class="page-scroll scroll" href="../formulario">Citas</a></li>
+							<li><a class="page-scroll scroll" data-toggle="modal" href="#modal_medicina">Medicinas</a></li>
 							<li><a class="page-scroll scroll" href="#contact">Contact</a></li>
 						</ul>
 					</div>
@@ -105,6 +105,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="subscribe text-center clr3"></div>
 			{% endblock %}
 			{% block cuerpoCero%}
+			<div id="modal_medicina" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+			    <!-- Categoria Modal content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <h4 class="modal-title">
+			          <form action="addmedicina" method="POST" style="position: relative;" class="form-inline">
+			            {% csrf_token %}
+			            <label  class="textoModal" for="category">Crear Medicina:</label>
+			            <input type="text" style="width: 50%;" name="medicina" placeholder="nombre medicina" class="form-control" required="">
+									<label  class="textoModal" for="category">Tipo de Medicamento:</label>
+									<input type="text" style="width: 50%;" name="tipo_medicamento" placeholder="medicamento" class="form-control" required="">
+									<label  class="textoModal" for="category">Presentación del Medicamento:</label>
+									<input type="text" style="width: 40%;" name="tipo_dosis" placeholder="presentacion" class="form-control" required="">
+									<button type="submit" class="btn btn-primary">Guardar</button>
+			          </form>
+			        </h4>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
 			{%endblock%}
 			{%block cuerpoUno%}

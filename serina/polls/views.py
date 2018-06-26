@@ -39,6 +39,26 @@ def add_categoria(request):
     db_o.save()
     return redirect('show_categoria')
 
+def add_medicina(request):
+    medicina = request.POST['medicina']
+    tipo_medicamento = request.POST['tipo_medicamento']
+    tipo_dosis = request.POST['tipo_dosis']
+    nombre = medicina.lower()
+    obj = Medicina.objects.all()
+    for i in obj:
+        medicinas = i.nombre.lower()
+        if(nombre == medicinas):
+            return("ERROR. ESTA AGREGANDO UNA MEDICINA QUE YA EXISTE")
+    context = {'medicina': nombre}
+    obj_dosis = Dosis(tipo = tipo_dosis)
+    obj_dosis.save()
+    obj_tipo_medicamento = TipoMedicamento(nombre = tipo_medicamento)
+    obj_tipo_medicamento.save()
+    pk_dosis = Dosis(pk = tipo_dosis)
+    pk_medicamento = TipoMedicamento(pk = tipo_medicamento)
+    obj_medicina = Medicina(nombre = medicina, tipo_medicamento = pk_medicamento, tipo_dosis = pk_dosis)
+    obj_medicina.save()
+    return redirect('show_categoria')
 
 def add_cita(request):
     categoria = request.POST['categ']
@@ -56,6 +76,13 @@ def show_categoria(request):
     tratamiento = Tratamiento.objects.all()
     context = {'categoria': categoria, 'cita': cita, 'tratamiento': tratamiento}
     return render(request, 'serina_views/ver_categ.html', context)
+
+def delete_categoria(request):
+    categoria = request.GET.get("categoria","")
+    cita = Cita.objects.all()
+    eliminar = Categoria.objects.get(pk = categoria)
+    eliminar.delete()
+    return redirect('show_categoria')
 
 def show_tratamiento(request):
     cita = Cita.objects.all()
@@ -85,17 +112,16 @@ def show_indicaciones(request):
     cita = request.GET.get("cita","")
     obj_cita = Cita.objects.get(pk = cita)
     obj_categoria = Categoria.objects.all()
-    context = {'cita' : obj_cita, 'categoria' : obj_categoria}
+    obj_medicina = Medicina.objects.all()
+    context = {'cita' : obj_cita, 'categoria' : obj_categoria, 'medicina': obj_medicina}
     return render(request, "serina_views/form_indicaciones.html", context)
 
 def add_indicaciones(request):
     nombre_medicina = request.POST['nombre_medicina']
     cita = request.POST['citas_form']
-    tipo_dosis = request.POST['tipo_dosis']
     fecha_inicio_ind = request.POST['fecha_inicio_ind']
     fecha_final_ind = request.POST['fecha_final_ind']
     fecha_recipe_tra = request.POST['fecha_recipe_tra']
-    tipo_medicamento = request.POST['tipo_medicamento']
     cantidad_dosis = request.POST['cantidad_dosis']
     dif_horas = request.POST['dif_horas']
     tra_continuo = request.POST.get('tra_continuo', False)
@@ -106,24 +132,15 @@ def add_indicaciones(request):
     id_cita = Cita.objects.get(pk = cita)
     obj_tratamiento = Tratamiento(continuo = tra_continuo, fecha_recipe = fecha_recipe_tra, id_cita = id_cita)
     obj_tratamiento.save()
-    obj_tipo_medicamento = TipoMedicamento(nombre = tipo_medicamento)
-    obj_tipo_medicamento.save()
-    obj_dosis = Dosis(tipo = tipo_dosis)
-    obj_dosis.save()
-    pk_tipo_medicamento = TipoMedicamento(pk = tipo_medicamento)
-    pk_tipo_dosis = Dosis(pk = tipo_dosis)
-    obj_medicina = Medicina(nombre = nombre_medicina, tipo_medicamento = pk_tipo_medicamento,
-                            tipo_dosis = pk_tipo_dosis)
-    obj_medicina.save()
-    pk_indicacion = Medicina(pk = nombre_medicina)
-    obj_indicacion = Indicacion(nombre_medicina = pk_indicacion, fecha_inicio = fecha_inicio_ind, fecha_final = fecha_final_ind,
+
+    obj_medicina = Medicina.objects.get(pk = nombre_medicina)
+    obj_indicacion = Indicacion(nombre_medicina = obj_medicina, fecha_inicio = fecha_inicio_ind, fecha_final = fecha_final_ind,
                                 diferencia_horas = dif_horas, cantidad_dosis = cantidad_dosis)
     obj_indicacion.save()
     id_tratamiento = Tratamiento.objects.get(pk = obj_tratamiento.id)
-    pk_medicina_nombre = Medicina.objects.get(pk = nombre_medicina)
-    tratamiento_medicina = TratamientoMedicina(id_tratamiento = id_tratamiento, nombre_medicina = pk_medicina_nombre)
+    tratamiento_medicina = TratamientoMedicina(id_tratamiento = id_tratamiento, nombre_medicina = obj_medicina)
     tratamiento_medicina.save()
-    return redirect('show_categoria')
+    return redirect('show_tratamiento')
 
 def add_tratamiento(request):
     return redirect('show_tratamiento')

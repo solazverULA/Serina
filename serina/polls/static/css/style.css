@@ -65,22 +65,25 @@ ul{
 }
 
 .a_boton{
+	display: inline-block;
 	color: #FFFFFF;
-	background-color: #00e4c1;
+	float: : right;
+	background: #00e4c1;
 	padding: 8px 10px 8px 10px;
 	border-radius: 3px;
 	font-size: 16px;
-	position: relative;
-	top: 2px;
-	left: 5px;
+	text-decoration: none;
+	margin: 4px;
+
 }
 
-.a_boton:hover{
+.a_boton:hover {
 	color: #000000;
 	background-color: #FFFFFF;
 	border: 1px solid #000000;
 
 }
+
 .boton_select{
 font-size: 20px;
 color: #FFFF;

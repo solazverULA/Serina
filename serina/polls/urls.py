@@ -9,6 +9,7 @@ urlpatterns = [
     path('formulario/', views.view_categoria, name = 'view_categoria'),
     path('formulario/categoria', views.show_categoria, name = 'show_categoria'),
     path('formulario/addcategoria', views.add_categoria, name = 'add_categoria'),
+    path('formulario/deletecategoria', views.delete_categoria, name = 'delete_categoria'),
     path('formulario/addcita', views.add_cita, name = 'add_cita'),
     path('formulario/indicaciones', views.show_indicaciones, name = 'show_indicaciones'),
     path('formulario/addindicaciones', views.add_indicaciones, name = 'add_indicaciones'),
@@ -20,4 +21,5 @@ urlpatterns = [
     path('formulario/tratamiento', views.show_tratamiento, name = 'show_tratamiento'),
     path('formulario/datostratamiento', views.view_tratamiento, name = 'view_tratamiento'),
     path('formulario/addinformacion', views.add_informacion, name = 'add_informacion'),
+    path('formulario/addmedicina', views.add_medicina, name = 'add_medicina'),
 ]

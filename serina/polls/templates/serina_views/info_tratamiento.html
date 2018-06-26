@@ -2,9 +2,11 @@
 
 {% block title %}Tratamientos{% endblock %}
 {%block cuerpoUno%}
-<h1>Tratamiento #{{tratamiento.id}}: </h1>
-<br>
-<br>
+<div class="contact" id="contact">
+  <div class="container">
+    <h1>Tratamiento #{{tratamiento.id}}: </h1>
+  </div>
+</div>
 {%endblock%}
 {%block cuerpoDos%}
 <div class = "imagen-dos" id="contact">
@@ -56,9 +58,8 @@
           <div class="gaps">
               <hr class = "separador-indicaciones">
               {%for i in tratamiento_medicina%}
-                {%if i.id_tratamiento_id == tratamiento.id%}
-                  {%for medicinas in medicina%}
-                      {%if i.nombre_medicina_id == medicinas.nombre%}
+                {%for medicinas in medicina%}
+                  {%if i.id_tratamiento_id == tratamiento.id and i.nombre_medicina_id == medicinas.nombre %}
                         {%for indicaciones in indicacion%}
                           {%if medicinas.nombre == indicaciones.nombre_medicina_id%}
                             <p>Comienzo del tratamiento: {{indicaciones.fecha_inicio}}</p>
@@ -66,7 +67,6 @@
                         {%endfor%}
                       {%endif%}
                     {%endfor%}
-                  {%endif%}
                 {%endfor%}
               </hr>
             </div>

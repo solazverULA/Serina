@@ -31,14 +31,16 @@
           <input type="checkbox" class="color_recuadro" name="tra_continuo"/>
         </div>
           <div class="gaps">
-            <p>Nombre Medicina</p>
-            <input type="text"  name="nombre_medicina" placeholder="" required=""/>
+            <select class="boton_select" name="nombre_medicina">
+              <option selected="selected" disabled>Medicina-Presentacion</option>
+              {%for medicinas in medicina%}
+              <option class="option-bottom" value="{{medicinas.nombre}}">
+                {{medicinas.nombre}} - {{medicinas.tipo_dosis_id}}
+              </option>
+              {%endfor%}
+            </select>
           </div>
         </hr>
-          <div class="gaps">
-            <p>Tipo de Dosis</p>
-            <input type="text" class="color_recuadro" name="tipo_dosis" placeholder="" required=""/>
-          </div>
           <div class="gaps">
             <p>Fecha del Recipe</p>
             <input  id="gallery" class="color_recuadro" name="fecha_recipe_tra" type="text" placeholder = "yyyy-mm-dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
@@ -57,10 +59,6 @@
             {%endfor%}
           </div>
           <hr class = "separador-indicaciones">
-          <div class="gaps">
-            <p>Tipo de Medicamento</p>
-            <input type="text" class="color_recuadro" name="tipo_medicamento" placeholder="" required=""/>
-          </div>
         </hr>
           <div class="gaps">
             <p>Cantidad de Dosis</p>
