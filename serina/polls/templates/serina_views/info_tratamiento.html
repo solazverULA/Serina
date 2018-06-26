@@ -26,11 +26,15 @@
         </div>
         <hr class = "separador-indicaciones">
           <div class="gaps">
-            {%for i in tratamiento_medicina%}
-              {%if i.id_tratamiento_id == tratamiento.id%}
-                {%for medicinas in medicina%}
-                  {%if i.nombre_medicina_id == medicinas.nombre%}
-                    <p>Medicina: {{medicinas.nombre}}</p>
+            {%for j in tratamiento_indicacion%}
+            {%if j.id_tratamiento_id == tratamiento.id%}
+              {%for i in indicacion%}
+                {%if i.id == j.id_indicacion_id%}
+                  {%for medicinas in medicina%}
+                    {%if medicinas.id == i.id_medicina_id%}
+                      <p>Medicina: {{medicinas.nombre}}</p>
+                      {%endif%}
+                    {%endfor%}
                   {%endif%}
                 {%endfor%}
               {%endif%}
@@ -39,15 +43,36 @@
           </div>
           <div class="gaps">
               <hr class = "separador-indicaciones">
-            {%for i in tratamiento_medicina%}
-              {%if tratamiento.id == i.id_tratamiento_id%}
-                {%for medicinas in medicina%}
-                  {%if i.nombre_medicina_id == medicinas.nombre%}
-                    <p>Tipo de Dosis: {{medicinas.tipo_dosis_id}}</p>
+              {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    {%for medicinas in medicina%}
+                      {%if medicinas.id == i.id_medicina_id%}
+                      <p>Presentación: {{medicinas.tipo_dosis_id}}</p>
+                      {%endif%}
+                    {%endfor%}
                   {%endif%}
                 {%endfor%}
               {%endif%}
             {%endfor%}
+          </hr>
+          </div>
+          <div class="gaps">
+              <hr class = "separador-indicaciones">
+              {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    {%for medicinas in medicina%}
+                      {%if medicinas.id == i.id_medicina_id%}
+                        <p>Concentración: {{medicinas.concentracion}}</p>
+                        {%endif%}
+                      {%endfor%}
+                    {%endif%}
+                  {%endfor%}
+                {%endif%}
+              {%endfor%}
           </hr>
           </div>
           <div class="gaps">
@@ -56,19 +81,17 @@
               </hr>
           </div>
           <div class="gaps">
-              <hr class = "separador-indicaciones">
-              {%for i in tratamiento_medicina%}
-                {%for medicinas in medicina%}
-                  {%if i.id_tratamiento_id == tratamiento.id and i.nombre_medicina_id == medicinas.nombre %}
-                        {%for indicaciones in indicacion%}
-                          {%if medicinas.nombre == indicaciones.nombre_medicina_id%}
-                            <p>Comienzo del tratamiento: {{indicaciones.fecha_inicio}}</p>
-                          {%endif%}
-                        {%endfor%}
-                      {%endif%}
-                    {%endfor%}
+            <hr class = "separador-indicaciones">
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Comienzo del tratamiento: {{i.fecha_inicio}}</p>
+                  {%endif%}
                 {%endfor%}
-              </hr>
+              {%endif%}
+            {%endfor%}
+            </hr>
             </div>
             <hr class = "separador-indicaciones">
         </div>
@@ -87,71 +110,59 @@
           </div>
           <hr class = "separador-indicaciones">
           <div class="gaps">
-            {%for i in tratamiento_medicina%}
-              {%if i.id_tratamiento_id == tratamiento.id%}
-                {%for medicinas in medicina%}
-                    {%if i.nombre_medicina_id == medicinas.nombre%}
-                      {%for tipo in tipo_medicamento%}
-                        {%if medicinas.tipo_medicamento_id == tipo.nombre %}
-                          <p>Tipo de Medicamento: {{tipo.nombre}}</p>
-                        {%endif%}
-                      {%endfor%}
+          {%for j in tratamiento_indicacion%}
+            {%if j.id_tratamiento_id == tratamiento.id%}
+              {%for i in indicacion%}
+                {%if i.id == j.id_indicacion_id%}
+                  {%for medicinas in medicina%}
+                    {%if medicinas.id == i.id_medicina_id%}
+                      <p>Tipo de Medicamento: {{medicinas.tipo_medicamento_id}}</p>
                     {%endif%}
                   {%endfor%}
                 {%endif%}
               {%endfor%}
+            {%endif%}
+          {%endfor%}
             </div>
         </hr>
         <hr class = "separador-indicaciones">
           <div class="gaps">
-            {%for i in tratamiento_medicina%}
-              {%if i.id_tratamiento_id == tratamiento.id%}
-                {%for medicinas in medicina%}
-                    {%if i.nombre_medicina_id == medicinas.nombre%}
-                      {%for indicaciones in indicacion%}
-                        {%if medicinas.nombre == indicaciones.nombre_medicina_id%}
-                          <p>Cantidad de Dosis: {{indicaciones.cantidad_dosis}}</p>
-                        {%endif%}
-                      {%endfor%}
-                    {%endif%}
-                  {%endfor%}
-                {%endif%}
-              {%endfor%}
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Cantidad de Dosis: {{i.cantidad_dosis}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
             </div>
           </hr>
           <hr class = "separador-indicaciones">
           <div class="gaps">
-            {%for i in tratamiento_medicina%}
-              {%if i.id_tratamiento_id == tratamiento.id%}
-                {%for medicinas in medicina%}
-                    {%if i.nombre_medicina_id == medicinas.nombre%}
-                      {%for indicaciones in indicacion%}
-                        {%if medicinas.nombre == indicaciones.nombre_medicina_id%}
-                          <p>Diferencia de Horas entre cada toma: {{indicaciones.diferencia_horas}}</p>
-                        {%endif%}
-                      {%endfor%}
-                    {%endif%}
-                  {%endfor%}
-                {%endif%}
-              {%endfor%}
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Diferencia de Horas entre cada toma: {{i.diferencia_horas}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
           </div>
         </hr>
 
           <div class="gaps">
             <hr class = "separador-indicaciones">
-            {%for i in tratamiento_medicina%}
-              {%if i.id_tratamiento_id == tratamiento.id%}
-                {%for medicinas in medicina%}
-                    {%if i.nombre_medicina_id == medicinas.nombre%}
-                      {%for indicaciones in indicacion%}
-                        {%if medicinas.nombre == indicaciones.nombre_medicina_id%}
-                          <p>Finalización del tratamiento: {{indicaciones.fecha_final}}</p>
-                        {%endif%}
-                      {%endfor%}
-                    {%endif%}
-                  {%endfor%}
-                {%endif%}
-              {%endfor%}
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Finalización del tratamiento: {{i.fecha_final}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
             </div>
           <hr class = "separador-indicaciones">
         </div>

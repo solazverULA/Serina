@@ -74,16 +74,17 @@ class Dosis(models.Model):
     tipo = models.CharField(max_length=40, primary_key = True)
 
 class Medicina(models.Model):
-    nombre = models.CharField(max_length=40, primary_key=True)
+    nombre = models.CharField(max_length=40)
+    concentracion = models.CharField(max_length=50)
     tipo_medicamento = models.ForeignKey(TipoMedicamento, on_delete=models.CASCADE)
     tipo_dosis = models.ForeignKey(Dosis, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ( "nombre" , "tipo_medicamento" )
+        unique_together = ( "nombre" , "tipo_dosis", "concentracion" )
 
 
 class Indicacion(models.Model):
-    nombre_medicina = models.ForeignKey(Medicina, on_delete=models.CASCADE)
+    id_medicina = models.ForeignKey(Medicina, on_delete=models.CASCADE)
     fecha_inicio = models.DateField()
     fecha_final = models.DateField()
     diferencia_horas = models.CharField(max_length= 40)
@@ -94,9 +95,9 @@ class Nota(models.Model):
     observacion = models.CharField(max_length=140)
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)
 
-class TratamientoMedicina(models.Model):
+class TratamientoIndicacion(models.Model):
     id_tratamiento = models.ForeignKey(Tratamiento, on_delete=models.CASCADE)
-    nombre_medicina = models.ForeignKey(Medicina, on_delete=models.CASCADE)
+    id_indicacion = models.ForeignKey(Indicacion, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ("id_tratamiento","nombre_medicina")
+        unique_together = ("id_tratamiento","id_indicacion")
