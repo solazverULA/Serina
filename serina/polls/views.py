@@ -85,6 +85,12 @@ def delete_categoria(request):
     eliminar.delete()
     return redirect('show_categoria')
 
+def delete_cita(request):
+    cita = request.GET.get("cita", "")
+    eliminar = Cita.objects.get(pk = cita)
+    eliminar.delete()
+    return redirect('show_categoria')
+
 def show_tratamiento(request):
     cita = Cita.objects.all()
     tratamiento = Tratamiento.objects.all()

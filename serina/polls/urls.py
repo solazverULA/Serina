@@ -11,6 +11,7 @@ urlpatterns = [
     path('formulario/addcategoria', views.add_categoria, name = 'add_categoria'),
     path('formulario/deletecategoria', views.delete_categoria, name = 'delete_categoria'),
     path('formulario/addcita', views.add_cita, name = 'add_cita'),
+    path('formulario/deletecita', views.delete_cita, name = 'delete_cita'),
     path('formulario/indicaciones', views.show_indicaciones, name = 'show_indicaciones'),
     path('formulario/addindicaciones', views.add_indicaciones, name = 'add_indicaciones'),
     path('index/login', views.show_login, name = 'show_login'),

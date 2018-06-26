@@ -60,6 +60,34 @@
             {%for citas in cita%}
             {%if citas.id_categoria_id == categorias.id %}
             <div class="panel-body"><a href = "indicaciones?cita={{citas.id}}">{{citas.fecha}}</a>
+              <!------>
+              <input type="submit" name="eliminar_cita" style="padding:  5px 20px 5px 20px; margin: 2px; position: relative;
+              left: 80%;" class="btn btn-primary"
+              data-toggle="modal" data-target="#modal_eliminar_cita" value="eliminar">
+              <!-- Modal  Citassss eliminar-->
+              <div id="modal_eliminar_cita" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                  <!-- Citasss Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">
+                          <label  class="textoModal" for="eliminar">¿Está seguro de que desea eliminar la cita?
+                            <br>
+                            Se eliminaran todo lo que se encuentre dentro de la misma
+                          </label>
+
+                      </h4>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="deletecita?cita={{citas.id}}" class="btn btn-default">Eliminar</a>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!------------------>
             </form>
             </div>
             {%endif%}
