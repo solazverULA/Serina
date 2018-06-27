@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import FormCategoria, FormUsuario
+from django.core.exceptions import PermissionDenied
 from .models import Categoria
 from .models import Cita
 from .models import Usuario
@@ -31,13 +32,13 @@ def index(request):
 
 def view_categoria(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     return render(request, 'serina_views/ver_categ.html')
 
 def add_categoria(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     nombre = request.POST['categoria']
     categoria = nombre.lower()
@@ -46,14 +47,21 @@ def add_categoria(request):
         nombres = i.nombre.lower()
         if(categoria == nombres):
             return HttpResponse("ERROR. ESTA AGREGANDO UNA CATEGORIA QUE YA EXISTE")
-    context = {'categoria': categoria}
-    db_o = Categoria(nombre=categoria)
+
+    email = User.objects.filter(email = request.session['user_email'])
+    email_obj = User.objects.get(pk = email[0].id)
+
+
+
+    db_o = Categoria(nombre=categoria, email_usuario=email_obj)
     db_o.save()
+
+
     return redirect('show_categoria')
 
 def add_medicina(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     medicina = request.POST['medicina']
     tipo_medicamento = request.POST['tipo_medicamento']
@@ -70,25 +78,31 @@ def add_medicina(request):
     pk_medicamento = TipoMedicamento(pk = tipo_medicamento)
     obj_medicina = Medicina(nombre = nombre, concentracion = concentracion, tipo_medicamento = pk_medicamento, tipo_dosis = pk_dosis)
     obj_medicina.save()
+
+
     return redirect('show_categoria')
 
 def add_cita(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     categoria = request.POST['categ']
     fecha = request.POST['fechaa']
     nota = request.POST['notaa']
-    email = Usuario.objects.get(pk ='kathesm903@gmail.com')
+
+    email = User.objects.filter(email = request.session['user_email'])
+    email_obj = User.objects.get(pk = email[0].id)
+
+
     id_categ = Categoria.objects.get(pk = categoria)
-    cita = Cita(fecha = fecha, nota = nota, email_usuario = email, id_categoria = id_categ)
+    cita = Cita(fecha = fecha, nota = nota, email_usuario = email_obj, id_categoria = id_categ)
     cita.save()
     return redirect('show_categoria')
 
 def show_categoria(request):
 
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     categoria = Categoria.objects.all()
     cita = Cita.objects.all
@@ -98,7 +112,7 @@ def show_categoria(request):
 
 def delete_categoria(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     categoria = request.GET.get("categoria","")
     cita = Cita.objects.all()
@@ -108,7 +122,7 @@ def delete_categoria(request):
 
 def delete_cita(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     cita = request.GET.get("cita", "")
     eliminar = Cita.objects.get(pk = cita)
@@ -117,7 +131,7 @@ def delete_cita(request):
 
 def show_tratamiento(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     cita = Cita.objects.all()
     tratamiento = Tratamiento.objects.all()
@@ -129,7 +143,7 @@ def show_tratamiento(request):
 
 def view_tratamiento(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     tratamiento = request.GET.get("tratamiento","")
     obj_tratamiento = Tratamiento.objects.get(pk = tratamiento)
@@ -148,7 +162,7 @@ def view_tratamiento(request):
 
 def show_indicaciones(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     cita = request.GET.get("cita","")
     obj_cita = Cita.objects.get(pk = cita)
@@ -159,7 +173,7 @@ def show_indicaciones(request):
 
 def add_indicaciones(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     medicina = request.POST['info_medicina']
     info = medicina.split("|$")
@@ -195,13 +209,13 @@ def add_indicaciones(request):
 
 def add_tratamiento(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     return redirect('show_tratamiento')
 
 def add_informacion(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        raise PermissionDenied
 
     return render(request, "serina_views/form_informacion.html")
 
@@ -226,7 +240,7 @@ def add_sing_up(request):
     user.last_name = apellido
     user.save()
 
-    db_object = Usuario(email = email, contrasena = password, nombre = nombre, apellido = apellido, ci = ci, fecha_nacimiento =nacimiento, altura = altura)
+    db_object = Usuario(email = user, nombre = nombre, apellido = apellido, ci = ci, fecha_nacimiento =nacimiento, altura = altura)
     db_object.save()
     return redirect('index')
 
@@ -238,6 +252,7 @@ def add_sing_in(request):
 
     if user is not None:
         login(request, user)
+        request.session['user_email'] = user.email
         messages.success(request, 'Bienvenido')
         return redirect('show_categoria')
     else:
@@ -246,5 +261,11 @@ def add_sing_in(request):
 
 def logout_view(request):
     logout(request)
+
+    try:
+        del request.session['user_email']
+    except KeyError:
+        pass
+
     messages.success(request, 'Hasta Luego')
     return redirect('index')

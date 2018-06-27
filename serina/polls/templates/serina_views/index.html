@@ -103,12 +103,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						 <li><a class="page-scroll scroll" href="#">Inicio</a></li>
 						 <li><a href="login">Iniciar Sesión</a></li>
 						 <li><a href="signup">Registrarse</a></li>
-							<!-- <li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
-							<li><a class="page-scroll scroll" href="#">Inicio</a></li>
-							<li><a class="page-scroll scroll" href="../formulario/verCateg">Especialización</a></li>
-							<li><a class="page-scroll scroll" href="../formulario/addIndicaciones">Tratamientos</a></li> -->
-							<!-- <li><a class="page-scroll scroll" href="#contact">Contact</a></li> -->
+						 <li><a  data-toggle="modal" href="#modal_ayuda">Ayuda</a></li>
+
 						</ul>
+						<!-- Modal  Categoria-->
+
 					</div>
 					<!-- /.navbar-collapse -->
 				</nav>
@@ -193,7 +192,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!--about -->
 	<div class="agileits-banner-grids text-center">
+		<div id="modal_ayuda" class="modal fade" role="dialog">
+			<div class="modal-dialog">
 
+				<!-- Categoria Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">
+								<label  class="textoModal" for="eliminar"> <h2 align="center"> Manual de usuario </h2>
+									<p>Para poder utilizar nuestros servicios, debe primero registrarse seleccionando
+									 esta opcion en el menú principal.</p> <br>
+									<p>Luego debe iniciar Sesión.</p><br>
+									<p>Para Ingresar sus tratamientos, Debe hacerlo dentro de una Categoría.</p> <br>
+									<p>Si No tiene ninguna categoría, debe crearla.</p> <br>
+									<p>Las citas se crean dentro de las categorias.</p><br>
+									<p>Las categorías y las citas, se crean ingresando a especializaciones.</p><br>
+									<p>Para ingresar un tratamiento, debe seleccionar la cita a la que va a pertenecer.</p> <br>
+									<p>Luego de tener tratamientos creados, puede consultarlos ingresando en el
+									menu a tratamientos.</p> <br>
+									<p>Para salir, solo debe seleccionar el link logout el cual se encuentra en la parte
+									superior derecha de la pantalla.</p> <br>
+
+								</label>
+
+						</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<!--footer-->

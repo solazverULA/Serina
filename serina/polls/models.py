@@ -1,4 +1,7 @@
+import datetime
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 #from django.contrib.auth.models import AbstractUser, UserManager
 
@@ -8,8 +11,7 @@ from django.db import models
 
 
 class Usuario(models.Model):
-    email = models.EmailField(primary_key=True)
-    contrasena = models.CharField(max_length=40)
+    email = models.ForeignKey(User, on_delete=models.CASCADE)
     nombre = models.CharField(max_length = 40)
     apellido = models.CharField(max_length = 40)
     ci = models.CharField(max_length = 8)
@@ -32,12 +34,15 @@ class Familiar(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=80, unique = True)
+    email_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Cita(models.Model):
     fecha = models.DateField()
     nota = models.CharField(max_length=70)
-    email_usuario = models.ForeignKey( Usuario, on_delete=models.CASCADE)
+    email_usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     id_categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+
+
 
 class Informacion(models.Model):
     ci_doctor = models.CharField(max_length=8, primary_key=True)

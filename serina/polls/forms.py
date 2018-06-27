@@ -12,4 +12,4 @@ class FormUsuario(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ["email", "contrasena", "nombre", "apellido", "ci", "fecha_nacimiento", "altura"]
+        fields = ["email", "nombre", "apellido", "ci", "fecha_nacimiento", "altura"]
