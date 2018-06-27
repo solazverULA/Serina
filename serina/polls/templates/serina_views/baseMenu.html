@@ -44,34 +44,55 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</head>
 
 
+
+
 		{%block inicioBody%} <body> {%endblock%}
 			{% block cabecera%}
+
+
+
+
+
+
 			<div class="sin-imagen" id="home">
+
+
+											{% for message in messages %}
+												<div class="alert {{ message.tags }} alert-dismissible " role="alert">
+													<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+													{{ message }}
+												</div>
+											{% endfor %}
+
+
 				<div class="w3-agile-logo">
 					<div class=" head-wl">
 						<div class="agileinfo-social-grids">
-							<ul>
-								<li><a href="#"><span class="fa fa-facebook"></span></a></li>
-								<li><a href="#"><span class="fa fa-twitter"></span></a></li>
-								<li><a href="#"><span class="fa fa-rss"></span></a></li>
-								<li><a href="#"><span class="fa fa-vk"></span></a></li>
-							</ul>
+
 						</div>
 						<div class="w3-header-top-right">
 							<div class="email-right">
-								<p><span class="fa fa-envelope" aria-hidden="true"></span> <a href="mailto:mail@example.com" class="info"> info@example.com</a></p>
+
 							</div>
 							<div class="w3-header-top-right-text">
-								<p><span class="fa fa-phone" aria-hidden="true"></span> (111)+245 245 66</p>
+								<p><span class="fa fa-user" aria-hidden="true"></span> <a href="../index/logout" class="info"> logout</a></p>
 							</div>
 							<div class="clearfix"> </div>
 						</div>
 						<div class="clearfix"> </div>
 					</div>
+
+
+
+
 				</div>
 			</div>
 			{% endblock %}
 			{% block menu %}
+
+
 			<div class="header-w3layouts">
 
 		<!-- Navigation -->
@@ -90,7 +111,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul class="nav navbar-nav navbar-right">
 					<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 							<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
-							<li><a class="page-scroll scroll" href="../index">Inicio</a></li>
 							<li><a class="page-scroll scroll" href="categoria">Especialización</a></li>
 							<li><a class="page-scroll scroll" href="tratamiento">Tratamientos</a></li>
 							<li><a class="page-scroll scroll" data-toggle="modal" href="#modal_medicina">Medicinas</a></li>
@@ -99,8 +119,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- /.navbar-collapse -->
 				</nav>
 			</div>
+
 			{% endblock %}
+
 			{%block imag%}
+
+			<div>
+
+
+
+
+			</div>
+
 			<div class="subscribe text-center clr3"></div>
 			{% endblock %}
 			{% block cuerpoCero%}
@@ -136,7 +166,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			{%endblock%}
 			{%block cuerpoUno%}
 			<div class="contact" id="contact">
-				<div class="container"></div>
+
+				<div class="container">
+
+
+
+				</div>
 				<div>
 					{%endblock%}
 					{%block cuerpoDos%}

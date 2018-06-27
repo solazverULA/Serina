@@ -18,6 +18,7 @@ urlpatterns = [
     path('index/signup', views.show_sign_up, name = 'show_sign_up'),
     path('index/addsingup', views.add_sing_up, name = 'add_sing_up'),
     path('index/addsingin', views.add_sing_in, name = 'add_sing_in'),
+    path('index/logout', views.logout_view, name = 'logout_view'),
     path('formulario/addtratamiento', views.add_tratamiento, name = 'add_tratamiento'),
     path('formulario/tratamiento', views.show_tratamiento, name = 'show_tratamiento'),
     path('formulario/datostratamiento', views.view_tratamiento, name = 'view_tratamiento'),

@@ -44,6 +44,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <body>
 	<div class="banner-w3" id="home">
+
+		{% for message in messages %}
+			<div class="alert {{ message.tags }} alert-dismissible " role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{{ message }}
+			</div>
+		{% endfor %}
+
 		<div class="w3-agile-logo">
 			<div class=" head-wl">
 				<div class="agileinfo-social-grids">
@@ -91,8 +101,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 							<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
 						 <li><a class="page-scroll scroll" href="#">Inicio</a></li>
-						 <li><a class="page-scroll scroll" href="login">Iniciar Sesión</a></li>
-						 <li><a class="page-scroll scroll" href="signup">Registrarse</a></li>
+						 <li><a href="login">Iniciar Sesión</a></li>
+						 <li><a href="signup">Registrarse</a></li>
 							<!-- <li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
 							<li><a class="page-scroll scroll" href="#">Inicio</a></li>
 							<li><a class="page-scroll scroll" href="../formulario/verCateg">Especialización</a></li>

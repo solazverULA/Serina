@@ -12,7 +12,10 @@ from .models import Medicina
 from .models import Indicacion
 from .models import TratamientoIndicacion
 
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseNotFound
 from django.http import Http404
@@ -27,9 +30,14 @@ def index(request):
     return render(request, 'serina_views/index.html')
 
 def view_categoria(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     return render(request, 'serina_views/ver_categ.html')
 
 def add_categoria(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
 
     nombre = request.POST['categoria']
     categoria = nombre.lower()
@@ -44,6 +52,9 @@ def add_categoria(request):
     return redirect('show_categoria')
 
 def add_medicina(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     medicina = request.POST['medicina']
     tipo_medicamento = request.POST['tipo_medicamento']
     tipo_dosis = request.POST['tipo_dosis']
@@ -62,6 +73,9 @@ def add_medicina(request):
     return redirect('show_categoria')
 
 def add_cita(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     categoria = request.POST['categ']
     fecha = request.POST['fechaa']
     nota = request.POST['notaa']
@@ -72,6 +86,10 @@ def add_cita(request):
     return redirect('show_categoria')
 
 def show_categoria(request):
+
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     categoria = Categoria.objects.all()
     cita = Cita.objects.all
     tratamiento = Tratamiento.objects.all()
@@ -79,6 +97,9 @@ def show_categoria(request):
     return render(request, 'serina_views/ver_categ.html', context)
 
 def delete_categoria(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     categoria = request.GET.get("categoria","")
     cita = Cita.objects.all()
     eliminar = Categoria.objects.get(pk = categoria)
@@ -86,12 +107,18 @@ def delete_categoria(request):
     return redirect('show_categoria')
 
 def delete_cita(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     cita = request.GET.get("cita", "")
     eliminar = Cita.objects.get(pk = cita)
     eliminar.delete()
     return redirect('show_categoria')
 
 def show_tratamiento(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     cita = Cita.objects.all()
     tratamiento = Tratamiento.objects.all()
     medicina = Medicina.objects.all()
@@ -101,6 +128,9 @@ def show_tratamiento(request):
     return render(request, "serina_views/ver_tratamiento.html",context)
 
 def view_tratamiento(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     tratamiento = request.GET.get("tratamiento","")
     obj_tratamiento = Tratamiento.objects.get(pk = tratamiento)
     tratamiento_indicacion = TratamientoIndicacion.objects.all()
@@ -117,6 +147,9 @@ def view_tratamiento(request):
 
 
 def show_indicaciones(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     cita = request.GET.get("cita","")
     obj_cita = Cita.objects.get(pk = cita)
     obj_categoria = Categoria.objects.all()
@@ -125,6 +158,9 @@ def show_indicaciones(request):
     return render(request, "serina_views/form_indicaciones.html", context)
 
 def add_indicaciones(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     medicina = request.POST['info_medicina']
     info = medicina.split("|$")
     nombre_medicina = info[0]
@@ -158,9 +194,15 @@ def add_indicaciones(request):
     return redirect('show_tratamiento')
 
 def add_tratamiento(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     return redirect('show_tratamiento')
 
 def add_informacion(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
     return render(request, "serina_views/form_informacion.html")
 
 def show_login(request):
@@ -177,20 +219,32 @@ def add_sing_up(request):
     ci = request.POST['cedula']
     nacimiento = request.POST['fecha_nacimiento']
     altura = request.POST['altura']
+
+    user = User.objects.create_user(email, email, password)
+
+    user.first_name = nombre
+    user.last_name = apellido
+    user.save()
+
     db_object = Usuario(email = email, contrasena = password, nombre = nombre, apellido = apellido, ci = ci, fecha_nacimiento =nacimiento, altura = altura)
     db_object.save()
-    return render(request, "serina_views/index.html")
+    return redirect('index')
 
 def add_sing_in(request):
-    email = request.POST['lemail']
+    username = request.POST['lemail']
     password = request.POST['lpassword']
 
-    try:
-        usuario = Usuario.objects.get(pk=email)
-    except Usuario.DoesNotExist:
-        raise Http404("User does not exist")
+    user = authenticate(request, username = username, password=password)
 
-    if(usuario.contrasena == password):
-        return HttpResponse('<h1>User login</h1>')
+    if user is not None:
+        login(request, user)
+        messages.success(request, 'Bienvenido')
+        return redirect('show_categoria')
     else:
-        return HttpResponse('<h1>User logout</h1>')
+        messages.success(request, 'Datos Incorrectos')
+        return redirect('show_login')
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Hasta Luego')
+    return redirect('index')

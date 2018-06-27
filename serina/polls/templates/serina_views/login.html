@@ -24,10 +24,19 @@
 <!-- //js -->
 </head>
 <body>
+
+
+
 	<!-- main -->
 	<div class="main">
+
+
+
 		<h1>Formulario De Acceso</h1>
 		<div class="login-form">
+
+
+
 			<div class="sap_tabs w3ls-tabs">
 				<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 					<ul class="resp-tabs-list">
@@ -38,6 +47,14 @@
 
             {%endblock%}
           </ul>
+
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible " role="alert">
+              <h2>
+              {{ message }} </h2>
+            </div>
+          {% endfor %}
+
 					<div class="clear"> </div>
 					<div class="resp-tabs-container">
             {%block sign_in%}
