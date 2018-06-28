@@ -1,0 +1,122 @@
+{%extends 'serina_views/baseMenu.html'%}
+{% load staticfiles %}
+{% block title %}Formulario{% endblock %}
+{%block head2%}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Medical Emergency Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs Sign up Web Templates,
+ Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{% static 'css/styleMedicamento.css' %}" rel='stylesheet' type='text/css' />
+<!--fonts-->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+{%endblock%}
+
+{% block menu %}
+<div class="header-w3layouts">
+
+<!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h1><a class="navbar-brand " href="../index">Serina<span style="padding: 10px" class="fa fa-heartbeat"></span></a></h1>
+    </div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">
+    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
+        <li><a class="page-scroll scroll" href="../index">Inicio</a></li>
+        <li><a class="page-scroll scroll" href="categoria">Especialización</a></li>
+        <li><a class="page-scroll scroll" href="tratamiento">Tratamientos</a></li>
+      </ul>
+    </div>
+<!-- /.navbar-collapse -->
+  </nav>
+</div>
+{% endblock %}
+{%block cuerpoDos%}
+<div class = "imagen-dos" id="contact">
+  <div class="bg-agile">
+    <div class="book-appointment">
+      <h2>Introduzca todos los valores</h2>
+      <form action="addindicaciones" method="POST">
+        {% csrf_token %}
+        <div class="left-agileits-w3layouts same">
+          <div class="gaps">
+            <p> Cita: {{cita.fecha}}</p>
+            <input type="hidden" name="citas_form" value="{{cita.id}}" />
+          </div>
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+          <p>Marque la casilla si el tratamiento es Continuo</p>
+          <input type="checkbox" class="color_recuadro" name="tra_continuo"/>
+        </div>
+          <div class="gaps">
+            <select style="width: 80%"class="boton_select" name="info_medicina">
+              <option selected="selected" disabled>Medicina-Presentación-Concentración</option>
+              {%for medicinas in medicina%}
+              <option class="option-bottom" value="{{medicinas.nombre}}|${{medicinas.tipo_dosis_id}}|${{medicinas.concentracion}}">
+                {{medicinas.nombre}} - {{medicinas.tipo_dosis_id}} - {{medicinas.concentracion}}
+              </option>
+              {%endfor%}
+
+
+            </select>
+          </div>
+        </hr>
+          <div class="gaps">
+            <p>Fecha del Recipe</p>
+            <input  id="gallery" class="color_recuadro" name="fecha_recipe_tra" type="text" placeholder = "yyyy-mm-dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+          </div>
+          <div class="gaps">
+            <p>Comienzo del tratamiento</p>
+            <input id="gallery" class="color_recuadro" name="fecha_inicio_ind" type="text" placeholder = "yyyy-mm-dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+          </div>
+        </div>
+        <div class="right-agileinfo same">
+          <div class="gaps">
+            {%for categorias in categoria%}
+            {%if cita.id_categoria_id == categorias.id%}
+            <p>Especialidad: {{categorias.nombre}} </p>
+            {%endif%}
+            {%endfor%}
+          </div>
+          <hr class = "separador-indicaciones">
+        </hr>
+          <div class="gaps">
+            <p>Cantidad de Dosis</p>
+            <input type="text" class="color_recuadro" name="cantidad_dosis" placeholder="" required=""/>
+          </div>
+          <div class="gaps">
+            <p>Diferencia de Horas entre cada toma</p>
+            <input type="text" class="color_recuadro" name="dif_horas" placeholder="" required=""/>
+          </div>
+          <div class="gaps">
+            <p>Finalización del tratamiento</p>
+            <input  id="gallery" class="color_recuadro" name="fecha_final_ind" type="text" placeholder = "yyyy-mm-dd" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}" required="">
+          </div>
+        </div>
+        <div class="clear"></div>
+        <input type="submit" style="position: relative; bottom: 8px; left: 43%; border-radius: 3px;"
+         value="Guardar">
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<!-- Calendar -->
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
+    <script>
+      $(function() {
+			$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+			 });
+		</script>
+  </div>
+  {%endblock%}

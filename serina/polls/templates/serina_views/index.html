@@ -1,0 +1,375 @@
+<!--Index de polls
+-->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>{% block title %}Serina{% endblock %}</title>
+
+	<!--meta tags -->
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="Medically Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+	<!--//meta tags ends here-->
+	<!--booststrap-->
+	<link href= "{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
+
+	<!--//booststrap end-->
+
+	<!-- font-awesome icons -->
+	<link href="{% static 'css/font-awesome.css'%}" rel="stylesheet">
+	<!-- //font-awesome icons -->
+	<link rel="stylesheet" href="{% static 'css/chocolat.css'%}" type="text/css" media="screen" />
+	<!-- gallery-->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}" type="text/css" media="all">
+	<!-- clients-->
+
+	<link rel="stylesheet" href="{% static 'css/flexslider.css'%}" type="text/css" media="screen" />
+	<!-- banner text slider-->
+	<!--stylesheets-->
+	<link href="{% static 'css/style.css'%}" rel='stylesheet' type='text/css' media="all">
+	<!-- banner text slider-->
+
+	<link href="//fonts.googleapis.com/css?family=Barlow+Condensed:300,400,500,600" rel="stylesheet">
+	<!--//style sheet end here-->
+
+</head>
+
+<body>
+	<div class="banner-w3" id="home">
+
+		{% for message in messages %}
+			<div class="alert {{ message.tags }} alert-dismissible " role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{{ message }}
+			</div>
+		{% endfor %}
+
+		<div class="w3-agile-logo">
+			<div class=" head-wl">
+				<div class="agileinfo-social-grids">
+					<ul>
+						<li><a href="#"><span class="fa fa-facebook"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-rss"></span></a></li>
+						<li><a href="#"><span class="fa fa-vk"></span></a></li>
+					</ul>
+				</div>
+				<div class="w3-header-top-right">
+					<div class="email-right">
+						<!--<p><span class="fa fa-envelope" aria-hidden="true"></span> <a href="mailto:mail@example.com" class="info"> info@example.com</a></p>
+						-->
+					</div>
+					<!--<div class="w3-header-top-right-text">
+
+						<p><span class="fa fa-phone" aria-hidden="true"></span> (111)+245 245 66</p>
+					</div> -->
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="header-w3layouts">
+
+			<!-- Navigation -->
+			<div class="header-w3layouts">
+
+				<!-- Navigation -->
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="navbar-header page-scroll">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+						<h1><a class="navbar-brand" >Serina<span style="padding: 10px" class="fa fa-heartbeat"></span></a>
+						</h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-ex1-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+							<li class="hidden"><a class="page-scroll" href="#page-top"></a> </li>
+						 <li><a class="page-scroll scroll" href="#">Inicio</a></li>
+						 <li><a href="login">Iniciar Sesión</a></li>
+						 <li><a href="signup">Registrarse</a></li>
+						 <li><a  data-toggle="modal" href="#modal_ayuda">Ayuda</a></li>
+
+						</ul>
+						<!-- Modal  Categoria-->
+
+					</div>
+					<!-- /.navbar-collapse -->
+				</nav>
+			</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="container">
+			<!-- header -->
+			{%block header%}
+			<header>
+				<div class="flexslider-info">
+					<section class="slider">
+						<div class="flexslider">
+							<ul class="slides">
+								<li>
+									<div class=" w3l-info">
+										<div class="col-md-8  info-lleft-side">
+											<h4>Bienvenido</h4>
+											<p>Serina es una plataforma web que ayudará a organizar todo lo relacionado con su historial médico..</p>
+										</div>
+										<div class=" col-md-4 w3layouts_more-buttn">
+											<a href="#" data-toggle="modal" data-target="#myModal">Leer más</a>
+										</div>
+									</div>
+
+								</li>
+								<li>
+									<div class=" w3l-info">
+										<div class="col-md-8 info-lleft-side">
+											<h4>Registra Citas</h4>
+											<p>Serina guarda las citas dentro de la especialidad correspondiente para mantener mejor el orden</p>
+										</div>
+										<div class=" col-md-4 w3layouts_more-buttn">
+											<a href="#" data-toggle="modal" data-target="#myModal">Leer más</a>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div class=" w3l-info">
+										<div class="col-md-8 info-lleft-side">
+											<h4>Guarda Imagenes</h4>
+											<p>Guarda las imagenes de todos sus documentos médicos, asi asegurandole que no perdera de nuevo estos documentos</p>
+										</div>
+										<div class=" col-md-4 w3layouts_more-buttn">
+											<a href="#" data-toggle="modal" data-target="#myModal">Leer más</a>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+			</header>
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+		{% endblock%}
+
+	<!-- //header -->
+	<!-- modal -->
+		<div class="modal about-modal fade" id="myModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Serina</h4>
+					</div>
+					<div class="modal-body">
+						<div class="out-info">
+							<img src="images/g1.jpg" alt="" />
+							<p>Serina, es un servicio pensado para ayudar a sus usuarios a sentirse mas comodos a la hora
+							de llevar el control de su historial médico. Evitando perdida de la información y facilitando
+						un mejor control del cumplimiento de los respectivos tratamientos</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //modal -->
+
+	<!--about -->
+	<div class="agileits-banner-grids text-center">
+		<div id="modal_ayuda" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Categoria Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">
+								<label  class="textoModal" for="eliminar"> <h2 align="center"> Manual de usuario </h2>
+									<p>Para poder utilizar nuestros servicios, debe primero registrarse seleccionando
+									 esta opcion en el menú principal.</p> <br>
+									<p>Luego debe iniciar Sesión.</p><br>
+									<p>Para Ingresar sus tratamientos, Debe hacerlo dentro de una Categoría.</p> <br>
+									<p>Si No tiene ninguna categoría, debe crearla.</p> <br>
+									<p>Las citas se crean dentro de las categorias.</p><br>
+									<p>Las categorías y las citas, se crean ingresando a especializaciones.</p><br>
+									<p>Para ingresar un tratamiento, debe seleccionar la cita a la que va a pertenecer.</p> <br>
+									<p>Luego de tener tratamientos creados, puede consultarlos ingresando en el
+									menu a tratamientos.</p> <br>
+									<p>Para salir, solo debe seleccionar el link logout el cual se encuentra en la parte
+									superior derecha de la pantalla.</p> <br>
+
+								</label>
+
+						</h4>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--footer-->
+{%block footer%}
+	<div class="footer">
+		<nav>
+			<ul class="nav-buttom">
+				<li><a class="page-scroll scroll" href="#home">Inicio</a></li>
+					<li><a class="page-scroll scroll" href="login">Iniciar Sesión</a></li>
+					<li><a class="page-scroll scroll" href="signup">Registrarse</a></li>
+
+			<!--	<li><a class="page-scroll scroll" href="#home">Inicio</a></li>
+				<li><a class="page-scroll scroll" href="../formulario/verCateg">Especialización</a></li>
+				<li><a class="page-scroll scroll" href="#contact">Tratamientos</a></li> -->
+			</ul>
+		</nav>
+		<div class="container">
+		<div class="colr-row col-md-6  ">
+			<div class="col-md-6 col-sm-6 col-xs-6  bottom-head bottm-grid">
+				<h2><a href="index.html">Serina</a></h2>
+				<div class="clearfix"> </div>
+			</div>
+
+			<div class="col-md-6 col-sm-6 col-xs-6 copyright bottm-grid">
+				<h3>Siguenos</h3>
+				<div class="icons">
+					<ul>
+						<li><a href="#"><span class="fa fa-facebook"></span></a></li>
+						<li><a href="#"><span class="fa fa-twitter"></span></a></li>
+						<li><a href="#"><span class="fa fa-rss"></span></a></li>
+						<li><a href="#"><span class="fa fa-vk"></span></a></li>
+					</ul>
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+			<div class="colr-row  col-md-6">
+			<div class="col-md-6 col-sm-6 col-xs-6 one bottm-grid">
+				<h3>Acerca de</h3>
+				<p> Serina es un asistente virtual el cual le ayudara a organizar todo lo referente a su historial médico</p>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6 three bottm-grid">
+				<h3>Contacto</h3>
+				<div class="addres up-out">
+					<p><span class="fa fa-map-marker icons-left" aria-hidden="true"></span>Mérida, Venezuela</p>
+
+					<p><span class="fa fa-phone icons-left" aria-hidden="true"></span>tlf:+582400887766</p>
+
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<!-- //Copyright -->
+			<div class="clearfix"> </div>
+		</div>
+		</div>
+	</div>
+	<footer>
+		<p>&copy;2018 Serina. All Rights Reserved</a></p>
+	</footer>
+	{%endblock%}
+	<!--menu script-->
+	<script type='text/javascript' src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+	<!--//menu script-->
+	<!--FlexSlider banner-->
+
+	<script defer src="{% static 'js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript">
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				start: function (slider) {
+					$('body').removeClass('loading');
+				}
+			});
+		});
+	</script>
+	<!--End-slider-script-->
+	<!-- OnScroll-Number-Increase-JavaScript -->
+	<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'js/jquery.countup.js'%}"></script>
+	<script>
+		$('.counter').countUp();
+	</script>
+	<!-- //OnScroll-Number-Increase-JavaScript -->
+	<script src="{% static 'js/jquery.chocolat.js'%}"></script>
+
+	<!--light-box-files -->
+	<script type="text/javascript">
+		$(function () {
+			$('.w3_agile_gallery_grid a').Chocolat();
+		});
+	</script>
+	<!-- //gallery -->
+	<!--client carousel -->
+	<script src="{% static 'js/owl.carousel.js'%}"></script>
+	<script>
+		$(document).ready(function () {
+			$("#owl-demo").owlCarousel({
+				items: 1,
+				itemsDesktop: [768, 1],
+				itemsDesktopSmall: [414, 1],
+				lazyLoad: true,
+				autoPlay: true,
+				navigation: true,
+
+				navigationText: false,
+				pagination: true,
+
+			});
+
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+	<script type="text/javascript" src="{%static 'js/easing.js'%}"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!-- start-smoth-scrolling -->
+
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<!-- //here ends scrolling icon -->
+</body>
+
+</html>

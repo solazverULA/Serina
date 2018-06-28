@@ -1,0 +1,210 @@
+{%extends 'serina_views/form_indicaciones.html'%}
+
+{% block title %}Tratamientos{% endblock %}
+{%block cuerpoUno%}
+<div class="contact" id="contact">
+  <div class="container">
+    <h1>Tratamiento #{{tratamiento.id}}: </h1>
+  </div>
+</div>
+{%endblock%}
+{%block cuerpoDos%}
+<div class = "imagen-dos" id="contact">
+  <div class="bg-agile">
+    <div class="book-appointment">
+        {% csrf_token %}
+        <div class="left-agileits-w3layouts same">
+
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for citas in cita%}
+            {%if tratamiento.id_cita_id == citas.id%}
+              <p>Cita: {{citas.fecha}}</p>
+            {%endif%}
+            {%endfor%}
+          </hr>
+        </div>
+        <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for j in tratamiento_indicacion%}
+            {%if j.id_tratamiento_id == tratamiento.id%}
+              {%for i in indicacion%}
+                {%if i.id == j.id_indicacion_id%}
+                  {%for medicinas in medicina%}
+                    {%if medicinas.id == i.id_medicina_id%}
+                      <p>Medicina: {{medicinas.nombre}}</p>
+                      {%endif%}
+                    {%endfor%}
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+          </hr>
+          </div>
+          <div class="gaps">
+              <hr class = "separador-indicaciones">
+              {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    {%for medicinas in medicina%}
+                      {%if medicinas.id == i.id_medicina_id%}
+                      <p>Presentación: {{medicinas.tipo_dosis_id}}</p>
+                      {%endif%}
+                    {%endfor%}
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+          </hr>
+          </div>
+          <div class="gaps">
+              <hr class = "separador-indicaciones">
+              {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    {%for medicinas in medicina%}
+                      {%if medicinas.id == i.id_medicina_id%}
+                        <p>Concentración: {{medicinas.concentracion}}</p>
+                        {%endif%}
+                      {%endfor%}
+                    {%endif%}
+                  {%endfor%}
+                {%endif%}
+              {%endfor%}
+          </hr>
+          </div>
+          <div class="gaps">
+              <hr class = "separador-indicaciones">
+                <p>Fecha del Recipe: {{tratamiento.fecha_recipe}}</p>
+              </hr>
+          </div>
+          <div class="gaps">
+            <hr class = "separador-indicaciones">
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Comienzo del tratamiento: {{i.fecha_inicio}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+            </hr>
+            </div>
+            <hr class = "separador-indicaciones">
+        </div>
+        <div class="right-agileinfo same">
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for citas in cita%}
+              {%if citas.id == tratamiento.id_cita_id%}
+                {%for categorias in categoria%}
+                  {%if citas.id_categoria_id == categorias.id%}
+                    <p>Especialidad: {{categorias.nombre}} </p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+          </div>
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+          {%for j in tratamiento_indicacion%}
+            {%if j.id_tratamiento_id == tratamiento.id%}
+              {%for i in indicacion%}
+                {%if i.id == j.id_indicacion_id%}
+                  {%for medicinas in medicina%}
+                    {%if medicinas.id == i.id_medicina_id%}
+                      <p>Tipo de Medicamento: {{medicinas.tipo_medicamento_id}}</p>
+                    {%endif%}
+                  {%endfor%}
+                {%endif%}
+              {%endfor%}
+            {%endif%}
+          {%endfor%}
+            </div>
+        </hr>
+        <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Cantidad de Dosis: {{i.cantidad_dosis}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+            </div>
+          </hr>
+          <hr class = "separador-indicaciones">
+          <div class="gaps">
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Diferencia de Horas entre cada toma: {{i.diferencia_horas}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+          </div>
+        </hr>
+
+          <div class="gaps">
+            <hr class = "separador-indicaciones">
+            {%for j in tratamiento_indicacion%}
+              {%if j.id_tratamiento_id == tratamiento.id%}
+                {%for i in indicacion%}
+                  {%if i.id == j.id_indicacion_id%}
+                    <p>Finalización del tratamiento: {{i.fecha_final}}</p>
+                  {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endfor%}
+            </div>
+          <hr class = "separador-indicaciones">
+          <!--<input type="submit" name="eliminar" style="padding:  5px 20px 5px 20px; margin: 2px; position: relative;
+          left: 50%" class="btn btn-primary"
+          data-toggle="modal" data-target="#modal_eliminar_tra" value="eliminar Tratamiento"> -->
+        </div>
+        <div class="clear"></div>
+        <!-- Modal  Tratamiento> -->
+        <!-- <div id="modal_eliminar_tra" class="modal fade" role="dialog">
+          <div class="modal-dialog"> -->
+
+            <!-- Eliminar Tratamiento Modal content-->
+            <!--<div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    <label  class="textoModal" for="eliminar">¿Está seguro de que desea eliminar la categoría?
+                      <br>
+                      Se eliminaran todas las citas que se encuentren dentro de la misma
+                    </label>
+
+                </h4>
+              </div>
+              <div class="modal-footer">
+                <a href="deletetratamiento?tratamiento={{tratamiento.id}}" class="btn btn-default">Eliminar</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+    <!--  </form> -->
+    </div>
+  </div>
+  <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<!-- Calendar -->
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <script src="js/jquery-ui.js"></script>
+    <script>
+      $(function() {
+			$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+			 });
+		</script>
+  </div>
+{%endblock%}
